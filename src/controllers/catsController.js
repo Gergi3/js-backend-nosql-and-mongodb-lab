@@ -8,4 +8,15 @@ router.get('/', async (req, res) => {
     res.render('cats', { cats: catsConverted });
 });
 
+router.get('/create', (req, res) => {
+    res.render('createCat');
+})
+
+router.post('/create', async (req, res) => {
+    console.log(req.body)
+    await Cat.create(req.body);
+
+    res.redirect('/cats');
+})
+
 module.exports = router;
